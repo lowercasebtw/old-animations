@@ -7,7 +7,7 @@
 	"authors": [
 		"lowercasebtw"
 	],
-	"license": "CC0-1.0",
+	"license": "ARR",
 	"icon": "assets/old_animations/icon.png",
 	"environment": "client",
 	"entrypoints": {
