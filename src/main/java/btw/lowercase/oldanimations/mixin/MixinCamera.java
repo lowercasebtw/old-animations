@@ -17,7 +17,7 @@ public abstract class MixinCamera {
     protected abstract void moveBy(double d, double e, double f);
 
     @Inject(at = @At(value = "TAIL"), method = "update")
-    public void update$old(BlockView blockView, Entity entity, boolean thirdPerson, boolean thirdPersonFront,
+    private void update$old(BlockView blockView, Entity entity, boolean thirdPerson, boolean thirdPersonFront,
             float tickDelta,
             CallbackInfo ci) {
         if (!thirdPerson && !(entity instanceof LivingEntity && ((LivingEntity) entity).isSleeping())

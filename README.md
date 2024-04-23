@@ -12,8 +12,6 @@ Work in progress...
 - (❌) Smooth Sneak
 - (✅) Old Camera Position
 - (❌) Parallax Fix Toggle
-- (✅) Old Backwards Walking (Pre 1.12)
-- (❌) Old Damage Tilt (Pre 1.20)
 - (❌) No Damage Tilt
 #
 
@@ -24,6 +22,8 @@ Work in progress...
 #
 
 ## Legacy
+- (✅) Old Backwards Walking (Pre 1.12)
+- (❌) Old Damage Tilt (Pre 1.20)
 - (❌) Old Potion Colors
 - (✅) Potion Glint
 - (❌) Old Enchantment Glint (Pre 1.15)

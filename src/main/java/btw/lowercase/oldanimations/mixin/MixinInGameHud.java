@@ -10,7 +10,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(value = InGameHud.class, priority = Integer.MAX_VALUE)
 public abstract class MixinInGameHud {
     @Inject(method = "renderStatusEffectOverlay", at = @At("HEAD"), cancellable = true)
-    protected void renderStatusEffectOverlay$old(CallbackInfo ci) {
+    private void renderStatusEffectOverlay$old(CallbackInfo ci) {
         if (!OldAnimations.CONFIG.legacySettings.VANILLA_STATUS_HUD)
             ci.cancel();
     }

@@ -39,7 +39,7 @@ public abstract class MixinHeldItemRenderer {
     private ItemStack offHand;
 
     @Unique
-    public void update(ItemStack itemStack, ItemStack hand, boolean isOffHand) {
+    private void update(ItemStack itemStack, ItemStack hand, boolean isOffHand) {
         float g = ((hand != null && itemStack != null &&
                 !ItemStack.areItemsEqual(hand, itemStack))
                 || (hand == null && itemStack != null)) ? 0.0f : 1.0f;
@@ -59,7 +59,7 @@ public abstract class MixinHeldItemRenderer {
     }
 
     @Inject(at = @At(value = "HEAD"), method = "updateHeldItems", cancellable = true)
-    public void updateHeldItems$old(CallbackInfo ci) {
+    private void updateHeldItems$old(CallbackInfo ci) {
         if (!OldAnimations.CONFIG.visualSettings.OLD_SWING_ANIMATION)
             return;
         ci.cancel();

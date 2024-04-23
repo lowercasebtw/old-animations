@@ -9,12 +9,12 @@ import org.spongepowered.asm.mixin.injection.ModifyArg;
 @Mixin(value = InventoryScreen.class, priority = Integer.MAX_VALUE)
 public class MixinInventoryScreen {
     @ModifyArg(method = "drawForeground", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/DrawContext;drawText(Lnet/minecraft/client/font/TextRenderer;Lnet/minecraft/text/Text;IIIZ)I"), index = 2)
-    public int drawForeground$old$titleX(int i) {
+    private int drawForeground$old$titleX(int i) {
         return OldAnimations.CONFIG.legacySettings.OLD_INVENTORY_LAYOUT ? 86 : i;
     }
 
     @ModifyArg(method = "drawForeground", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/DrawContext;drawText(Lnet/minecraft/client/font/TextRenderer;Lnet/minecraft/text/Text;IIIZ)I"), index = 3)
-    public int drawForeground$old$titleY(int i) {
+    private int drawForeground$old$titleY(int i) {
         return OldAnimations.CONFIG.legacySettings.OLD_INVENTORY_LAYOUT ? 16 : i;
     }
 }

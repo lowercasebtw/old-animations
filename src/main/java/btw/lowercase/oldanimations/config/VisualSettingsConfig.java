@@ -22,11 +22,5 @@ public class VisualSettingsConfig implements ConfigData {
     public boolean PARALLAX_FIX = false;
 
     @ConfigEntry.Gui.Tooltip(count = 1)
-    public boolean OLD_BACKWARDS_WALKING = false;
-
-    @ConfigEntry.Gui.Tooltip(count = 1)
-    public boolean OLD_DAMAGE_TILT = false;
-
-    @ConfigEntry.Gui.Tooltip(count = 1)
     public boolean NO_DAMAGE_TILT = false;
 }

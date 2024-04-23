@@ -8,6 +8,12 @@ import me.shedaniel.autoconfig.annotation.ConfigEntry;
 @Config(name = "legacy_settings")
 public class LegacySettingsConfig implements ConfigData {
     @ConfigEntry.Gui.Tooltip(count = 1)
+    public boolean OLD_BACKWARDS_WALKING = false;
+
+    @ConfigEntry.Gui.Tooltip(count = 1)
+    public boolean OLD_DAMAGE_TILT = false;
+
+    @ConfigEntry.Gui.Tooltip(count = 1)
     public boolean OLD_POTION_COLORS = false;
 
     @ConfigEntry.Gui.Tooltip(count = 1)
