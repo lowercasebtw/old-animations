@@ -20,6 +20,7 @@ Work in progress...
 - (❌) Custom Block Outline Width
 - (❌) Block Outline Color
 - (❌) Block Overlay Color
+#
 
 ## Legacy
 - (❌) Old Potion Colors
@@ -33,6 +34,7 @@ Work in progress...
 - (❌) Render Offhand
 - (❌) Render Offhand Hotbar Slot
 - (🛠️) Old Inventory Layout (<1.8)
+#
 
 ## Combat
 - (✅) Always Sharpness Particles
@@ -40,3 +42,11 @@ Work in progress...
 - (✅/❌) Custom Hit Color [Currently Requires Restart]
 - (❌) Hit Color Rendering on Armor
 - (❌) Old Hit Color Rendering (1.7)
+
+#
+
+# Recommended Mods To Use With This
+- [Sword Blocking](https://modrinth.com/mod/sword-blocking/)
+- [Sneak Tweak](https://modrinth.com/mod/sneak-tweak)
+- [Fabric Skyboxes](https://modrinth.com/mod/fabricskyboxes)
+- [Fabric Skyboxes Interop](https://modrinth.com/mod/fabricskyboxes-interop)
