@@ -2,6 +2,10 @@
 Work in progress...
 
 ## Includes
+✅ = Implemented
+❌ = Not Implemented
+🛠️ = Works/Doesn't W.I.P
+
 ## Animations
 - (✅) Old Swing
 - (❌) Old Sneak
