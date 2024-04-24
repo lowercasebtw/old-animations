@@ -1,6 +1,6 @@
 {
     "text.autoconfig.old_animations.title": "Old Animations",
-    
+
     "text.autoconfig.old_animations.category.visual_settings": "Visual Settings",
     "text.autoconfig.old_animations.option.visualSettings.OLD_SWING_ANIMATION": "§aOld Swing",
     "text.autoconfig.old_animations.option.visualSettings.OLD_SWING_ANIMATION.@Tooltip": "Removes the 1.9+ swing animation, making it look like the 1.8 arm swing.",
@@ -25,7 +25,7 @@
     "text.autoconfig.old_animations.option.blockSettings.BLOCK_OUTLINE_COLOR.@Tooltip": "Changes the color of the block outline.",
     "text.autoconfig.old_animations.option.blockSettings.BLOCK_OVERLAY_COLOR": "§cCustom Block Overlay Color",
     "text.autoconfig.old_animations.option.blockSettings.BLOCK_OVERLAY_COLOR.@Tooltip": "Changes the color of the block overlay.",
-    
+
     "text.autoconfig.old_animations.category.legacy_settings": "Legacy Settings",
     "text.autoconfig.old_animations.option.legacySettings.OLD_BACKWARDS_WALKING": "§aOld Backwards Walking",
     "text.autoconfig.old_animations.option.legacySettings.OLD_BACKWARDS_WALKING.@Tooltip": "Makes the player model tilt slightly to the side when moving backwards like it was prior to 1.12.",
@@ -53,7 +53,7 @@
     "text.autoconfig.old_animations.option.legacySettings.RENDER_OFFHAND_SLOT.@Tooltip": "Enable/Disable the rendering of the offhand hotbar slot whilst in-game.",
     "text.autoconfig.old_animations.option.legacySettings.OLD_INVENTORY_LAYOUT": "§cOld Inventory Layout (<=1.8)",
     "text.autoconfig.old_animations.option.legacySettings.OLD_INVENTORY_LAYOUT.@Tooltip": "",
-    
+
     "text.autoconfig.old_animations.category.combat_settings": "Combat Settings",
     "text.autoconfig.old_animations.option.combatSettings.ALWAYS_SHARP_PARTICLES": "§aAlways Use Sharp Particles",
     "text.autoconfig.old_animations.option.combatSettings.ALWAYS_SHARP_PARTICLES.@Tooltip": "Always show sharpness particles whether or not if you have sharpness enchantment.",
