@@ -13,6 +13,6 @@ public abstract class MixinLivingEntity {
 
     @Redirect(method = "tick", at = @At(value = "INVOKE", target = "Lnet/minecraft/util/math/MathHelper;abs(F)F"))
     private float tick$old(float value) {
-        return OldAnimations.CONFIG.visualSettings.OLD_BACKWARDS_WALKING ? 0.0f : MathHelper.abs(value);
+        return OldAnimations.CONFIG.legacySettings.OLD_BACKWARDS_WALKING ? 0.0f : MathHelper.abs(value);
     }
 }
