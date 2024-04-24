@@ -6,7 +6,7 @@ Work in progress...
 ❌ = Not Implemented
 🛠️ = Works/Doesn't W.I.P
 
-## Animations
+## Visual
 - (✅) Old Swing
 - (❌) Old Sneak
 - (❌) Smooth Sneak
