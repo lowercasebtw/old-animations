@@ -14,11 +14,11 @@ public class AnimationsConfig extends PartitioningSerializer.GlobalData {
     @ConfigEntry.Gui.TransitiveObject
     public LegacySettingsConfig legacySettings = new LegacySettingsConfig();
 
-    @ConfigEntry.Category("block_settings")
+    @ConfigEntry.Category("qol")
     @ConfigEntry.Gui.TransitiveObject
-    public BlockSettingsConfig blockSettings = new BlockSettingsConfig();
+    public QOLConfig qolSettings = new QOLConfig();
 
-    @ConfigEntry.Category("combat_settings")
+    @ConfigEntry.Category("bug_fixes")
     @ConfigEntry.Gui.TransitiveObject
-    public CombatSettingsConfig combatSettings = new CombatSettingsConfig();
+    public BugFixesConfig bugFixes = new BugFixesConfig();
 }

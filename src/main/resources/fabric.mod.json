@@ -3,10 +3,8 @@
 	"id": "old_animations",
 	"version": "${version}",
 	"name": "Old Animations",
-	"description": "Old Animations Mod for 1.20.4+",
-	"authors": [
-		"lowercasebtw"
-	],
+	"description": "Old Animations and QOL Mod for 1.20.x (for 1.8/1.7 players)",
+	"authors": ["lowercasebtw"],
 	"license": "ARR",
 	"icon": "assets/old_animations/icon.png",
 	"environment": "client",
@@ -21,11 +19,23 @@
 	"mixins": [
 		"old_animations.mixins.json"
 	],
+	"custom": {
+		"sodium:options": {
+			"mixin.features.render.world.clouds": false
+		}
+	},
 	"depends": {
 		"fabricloader": ">=0.15.10",
-		"fabric-api": "*",
+		"fabric-api": ">=0.97.8+1.20.5",
+		"java": ">=17",
 		"minecraft": ">=1.20.5",
-		"cloth-config2": ">=14.0.125",
-		"java": ">=21"
+		"cloth-config2": ">=14.0.126"
+	},
+	"recommends": {
+		"modmenu": "*",
+		"fabricskyboxes": ">=0.7.4"
+	},
+	"breaks": {
+		"swordblocking": ">=1.3.2"
 	}
 }

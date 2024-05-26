@@ -9,10 +9,8 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 
 @Mixin(value = LivingEntity.class, priority = Integer.MAX_VALUE)
 public abstract class MixinLivingEntity {
-    // TODO: tiltScreen
-
     @Redirect(method = "tick", at = @At(value = "INVOKE", target = "Lnet/minecraft/util/math/MathHelper;abs(F)F"))
-    private float tick$old(float value) {
+    private float tick$old$backwardsWalking(float value) {
         return OldAnimations.CONFIG.legacySettings.OLD_BACKWARDS_WALKING ? 0.0f : MathHelper.abs(value);
     }
 }
