@@ -52,4 +52,18 @@ public class QOLConfig implements ConfigData {
 
     @ConfigEntry.Gui.Tooltip(count = 1)
     public boolean RENDER_FIRST_PERSON_PARTICLES = true;
+
+    @ConfigEntry.Gui.Tooltip(count = 1)
+    public CrosshairRenderType CROSSHAIR_RENDER_TYPE = CrosshairRenderType.DEFAULT;
+
+    @ConfigEntry.ColorPicker(allowAlpha = true)
+    @ConfigEntry.Gui.Tooltip(count = 1)
+    public int CROSSHAIR_COLOR = 0xFFFFFFFF;
+
+    public enum CrosshairRenderType {
+        DEFAULT,
+        NO_BLEND, // White for crosshair
+        NO_BLEND_ALL, // White for both crosshair & indicators
+        CUSTOM_COLOR // Colors Crosshair, NOT the below indicators
+    }
 }

@@ -6,6 +6,6 @@ import me.shedaniel.autoconfig.annotation.ConfigEntry;
 
 @Config(name = "bug_fixes")
 public class BugFixesConfig implements ConfigData {
-//    @ConfigEntry.Gui.Tooltip(count = 1)
-//    public boolean VERTICAL_BOBBING = false; // MC-225335 // TODO Fix weirdness
+    @ConfigEntry.Gui.Tooltip(count = 1)
+    public boolean VERTICAL_BOBBING_TILT = false; // MC-225335
 }

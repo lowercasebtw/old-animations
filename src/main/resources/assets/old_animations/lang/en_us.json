@@ -28,6 +28,10 @@
     "text.autoconfig.old_animations.option.legacySettings.OLD_POTION_COLORS.@Tooltip": "Re-adds the old potion colors prior to 1.19.4.",
     "text.autoconfig.old_animations.option.legacySettings.POTION_GLINT": "§aRe-add Potion Glint",
     "text.autoconfig.old_animations.option.legacySettings.POTION_GLINT.@Tooltip": "Makes potions have the enchantment glint once again like prior to 1.19.4.",
+    "text.autoconfig.old_animations.option.legacySettings.BLEND_PARTICLE_COLORS": "§cBlend Particle Colors",
+    "text.autoconfig.old_animations.option.legacySettings.BLEND_PARTICLE_COLORS.@Tooltip": "todo",
+    "text.autoconfig.old_animations.option.legacySettings.SWORD_BLOCKING": "§cSword Blocking w/ Shield (Visual)",
+    "text.autoconfig.old_animations.option.legacySettings.SWORD_BLOCKING.@Tooltip": "todo",
     "text.autoconfig.old_animations.option.legacySettings.OLD_ENCHANT_GLINT": "§cOld Enchantment Glint",
     "text.autoconfig.old_animations.option.legacySettings.OLD_ENCHANT_GLINT.@Tooltip": "Brings back the pre 1.15 enchantment rendering/loading.",
     "text.autoconfig.old_animations.option.legacySettings.ENCHANT_GLINT_1_7": "§c1.7 Enchantment Rendering",
@@ -74,7 +78,7 @@
     "text.autoconfig.old_animations.option.qolSettings.RENDER_HIT_COLOR_ARMOR.@Tooltip": "Colors the armor as the same as the hit/damage color.",
     "text.autoconfig.old_animations.option.qolSettings.USE_1_7_HIT_RENDERER": "§c1.7 Damage Rendering",
     "text.autoconfig.old_animations.option.qolSettings.USE_1_7_HIT_RENDERER.@Tooltip": "",
-    "text.autoconfig.old_animations.option.qolSettings.MINIMAL_VIEW_BOBBING": "§cMinimal View Bobbing",
+    "text.autoconfig.old_animations.option.qolSettings.MINIMAL_VIEW_BOBBING": "§aMinimal View Bobbing",
     "text.autoconfig.old_animations.option.qolSettings.MINIMAL_VIEW_BOBBING.@Tooltip": "todo",
     "text.autoconfig.old_animations.option.qolSettings.SHOW_NAMETAG_THIRD_PERSON": "§aShow Nametag In Thirdperson",
     "text.autoconfig.old_animations.option.qolSettings.SHOW_NAMETAG_THIRD_PERSON.@Tooltip": "Show your nametag above you whilst in thirdperson.",
@@ -82,8 +86,12 @@
     "text.autoconfig.old_animations.option.qolSettings.RENDER_BOSSBAR.@Tooltip": "Toggle the rendering of the bossbars list.",
     "text.autoconfig.old_animations.option.qolSettings.RENDER_FIRST_PERSON_PARTICLES": "§cRender Firstperson Particles",
     "text.autoconfig.old_animations.option.qolSettings.RENDER_FIRST_PERSON_PARTICLES.@Tooltip": "todo",
+    "text.autoconfig.old_animations.option.qolSettings.CROSSHAIR_RENDER_TYPE": "§cCrosshair Render Type",
+    "text.autoconfig.old_animations.option.qolSettings.CROSSHAIR_RENDER_TYPE.@Tooltip": "todo",
+    "text.autoconfig.old_animations.option.qolSettings.CROSSHAIR_COLOR": "§cCrosshair Color",
+    "text.autoconfig.old_animations.option.qolSettings.CROSSHAIR_COLOR.@Tooltip": "todo",
 
     "text.autoconfig.old_animations.category.bug_fixes": "Bug Fixes",
-    "text.autoconfig.old_animations.option.bugFixes.VERTICAL_BOBBING": "§aVertical Bobbing",
-    "text.autoconfig.old_animations.option.bugFixes.VERTICAL_BOBBING.@Tooltip": "Fixes Vertical Bobbing, which has been broken since 1.14-pre 2. [MC-225335]"
+    "text.autoconfig.old_animations.option.bugFixes.VERTICAL_BOBBING_TILT": "§aVertical Bobbing",
+    "text.autoconfig.old_animations.option.bugFixes.VERTICAL_BOBBING_TILT.@Tooltip": "Fixes Vertical Bobbing, which has been broken since 1.14-pre 2. [MC-225335]"
 }

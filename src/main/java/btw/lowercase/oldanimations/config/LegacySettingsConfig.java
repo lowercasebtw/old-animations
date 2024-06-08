@@ -46,7 +46,7 @@ public class LegacySettingsConfig implements ConfigData {
     public boolean OLD_HORIZON_HEIGHT = false; // Complete
 
     @ConfigEntry.Gui.Tooltip(count = 1)
-    public boolean DISABLE_COMBAT_SOUNDS = true; // Complete
+    public boolean DISABLE_COMBAT_SOUNDS = false; // Complete
 
     @ConfigEntry.Gui.Tooltip(count = 1)
     public boolean VANILLA_STATUS_HUD = true; // Complete

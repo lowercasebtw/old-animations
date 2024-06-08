@@ -1,5 +1,6 @@
 package btw.lowercase.oldanimations.mixin;
 
+import btw.lowercase.oldanimations.BobbingAccessor;
 import btw.lowercase.oldanimations.OldAnimations;
 import net.minecraft.entity.EntityDimensions;
 import net.minecraft.entity.EntityPose;
@@ -9,12 +10,12 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
-import net.minecraft.stat.Stat;
 import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.*;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import java.util.Map;
@@ -27,11 +28,18 @@ public abstract class MixinPlayerEntity extends LivingEntity {
 
     @Shadow public abstract void playSound(SoundEvent sound, float volume, float pitch);
 
-    @Shadow public abstract void increaseStat(Stat<?> stat, int amount);
-
     // NOTE: It's annoying that you have to extend a class to get its parent method/fields
     protected MixinPlayerEntity(EntityType<? extends LivingEntity> entityType, World world) {
         super(entityType, world);
+    }
+
+    @Inject(method = "tickMovement", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/player/PlayerEntity;setMovementSpeed(F)V", shift = At.Shift.AFTER))
+    public void tickMovement(CallbackInfo ci) {
+        if (!OldAnimations.CONFIG.bugFixes.VERTICAL_BOBBING_TILT)
+            return;
+        BobbingAccessor bobbingAccessor = (BobbingAccessor) this;
+        float g = this.isOnGround() || this.getHealth() <= 0.0f ? 0.0f : (float) (Math.atan(-this.getVelocity().y * (double) 0.2f) * 15.0);
+        bobbingAccessor.tiltingFix$setBobbingTilt(bobbingAccessor.tiltingFix$getBobbingTilt() + (g - bobbingAccessor.tiltingFix$getBobbingTilt()) * 0.8f);
     }
 
     @Redirect(method = "attack", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/World;playSound(Lnet/minecraft/entity/player/PlayerEntity;DDDLnet/minecraft/sound/SoundEvent;Lnet/minecraft/sound/SoundCategory;FF)V"))

@@ -27,7 +27,7 @@ public class VisualSettingsConfig implements ConfigData {
     public boolean NO_DAMAGE_TILT = false; // Complete
 
     @ConfigEntry.Gui.Tooltip(count = 1)
-    public boolean RENDER_GLOWING_EFFECT = true;
+    public boolean RENDER_GLOWING_EFFECT = true; // Complete
 
     public enum CameraVersion {
         _BELOW_OR_1_8,

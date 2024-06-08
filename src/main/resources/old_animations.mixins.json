@@ -5,6 +5,7 @@
   "mixins": [],
   "client": [
     "MixinArmorFeatureRenderer",
+    "MixinBossBarHud",
     "MixinCamera",
     "MixinGameRenderer",
     "MixinHeldItemRenderer",

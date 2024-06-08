@@ -47,14 +47,14 @@ NOTE: Everything is vanilla configured by default, if you want to change any set
 - (✅) Custom Hit Color 
 - (✅) Hit Color On Armor
 - (❌) 1.7 Damage Rendering
-- (❌) Minimal View Bobbing
+- (✅) Minimal View Bobbing
 - (✅) Nametag In Thirdperson (Toggle)
 - (✅) Render Bossbar (Toggle)
 - (❌) Render Firstperson Particles (Toggle)
 #
 
 # Bug Fixes
-- (❌) View Bobbing Upwards/Downwards Tilt (When flying up or falling down)
+- (✅) View Bobbing Upwards/Downwards Tilt (When flying up or falling down)
 #
 
 # Recommended Mods To Use With This

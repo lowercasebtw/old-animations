@@ -1,11 +1,16 @@
 package btw.lowercase.oldanimations.mixin;
 
+import btw.lowercase.oldanimations.BobbingAccessor;
 import btw.lowercase.oldanimations.OldAnimations;
+import com.llamalad7.mixinextras.injector.v2.WrapWithCondition;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.render.GameRenderer;
 import net.minecraft.client.render.OverlayTexture;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.util.math.MathHelper;
+import net.minecraft.util.math.RotationAxis;
 import org.spongepowered.asm.mixin.*;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -14,14 +19,14 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(value = GameRenderer.class, priority = Integer.MAX_VALUE)
 public abstract class MixinGameRenderer {
+    @Shadow @Final
+    MinecraftClient client;
+
     @Mutable
-    @Shadow @Final private OverlayTexture overlayTexture;
+    @Shadow @Final
+    private OverlayTexture overlayTexture;
 
-    @Unique
-    public float bobbingTilt = 0.0f;
-
-    @Unique
-    public float prevBobbingTilt = 0.0f;
+    @Shadow protected abstract void bobView(MatrixStack matrices, float tickDelta);
 
     @Inject(method = "tiltViewWhenHurt", at = @At("HEAD"), cancellable = true)
     public void tiltViewWhenHurt$old$noTilt(MatrixStack matrices, float tickDelta, CallbackInfo ci) {
@@ -37,28 +42,22 @@ public abstract class MixinGameRenderer {
     @Inject(method = "tick", at = @At("HEAD"))
     public void tick$overlayTextureReload(CallbackInfo ci) {
         if (OldAnimations.previousHitColor != OldAnimations.CONFIG.qolSettings.HIT_COLOR) {
-            OldAnimations.previousHitColor = OldAnimations.CONFIG.qolSettings.HIT_COLOR;
             overlayTexture = new OverlayTexture();
+            OldAnimations.previousHitColor = OldAnimations.CONFIG.qolSettings.HIT_COLOR;
         }
     }
 
-//    @Inject(method = "bobView", at = @At("TAIL"))
-//    private void bobView$old(MatrixStack matrixStack, float tickDelta, CallbackInfo ci) {
-//        if (!OldAnimations.CONFIG.bugFixes.VERTICAL_BOBBING)
-//            return;
-//        if (!(this.client.getCameraEntity() instanceof PlayerEntity))
-//            return;
-//        matrixStack.multiply(RotationAxis.POSITIVE_X.rotationDegrees(MathHelper.lerp(tickDelta, prevBobbingTilt, bobbingTilt)));
-//    }
-//
-//    @Inject(method = "render", at = @At("HEAD"))
-//    public void render$old$bobbingTiltFix(float tickDelta, long startTime, boolean tick, CallbackInfo ci) {
-//        if (!OldAnimations.CONFIG.bugFixes.VERTICAL_BOBBING || client.player == null)
-//            return;
-//        float g = 0.0f;
-//        if (!client.player.isOnGround() && !(client.player.getHealth() <= 0.0F))
-//            g = (float)(Math.atan(-client.player.getVelocity().y * 0.20000000298023224) * 15.0);
-//        prevBobbingTilt = bobbingTilt;
-//        bobbingTilt += (g - bobbingTilt) * 0.8F;
-//    }
+    @WrapWithCondition(method = "renderWorld", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/render/GameRenderer;bobView(Lnet/minecraft/client/util/math/MatrixStack;F)V"))
+    public boolean renderWorld$qol$minimalBobbing(GameRenderer instance, MatrixStack matrices, float tickDelta) {
+        return !OldAnimations.CONFIG.qolSettings.MINIMAL_VIEW_BOBBING;
+    }
+
+    @Inject(method = "bobView", at = @At("TAIL"))
+    private void bobView$bug$jumpTilt(MatrixStack matrices, float tickDelta, CallbackInfo ci) {
+        if (!OldAnimations.CONFIG.bugFixes.VERTICAL_BOBBING_TILT || !(this.client.getCameraEntity() instanceof PlayerEntity playerEntity))
+            return;
+        BobbingAccessor bobbingAccessor = (BobbingAccessor) playerEntity;
+        float j = MathHelper.lerp(tickDelta, bobbingAccessor.tiltingFix$getPreviousBobbingTilt(), bobbingAccessor.tiltingFix$getBobbingTilt());
+        matrices.multiply(RotationAxis.POSITIVE_X.rotationDegrees(j));
+    }
 }
