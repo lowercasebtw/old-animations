@@ -1,2 +1,4 @@
 accessWidener v2 named
 accessible class net/minecraft/client/render/item/HeldItemRenderer$HandRenderType
+accessible field net/minecraft/screen/PlayerScreenHandler craftingInput Lnet/minecraft/inventory/RecipeInputInventory;
+accessible field net/minecraft/screen/PlayerScreenHandler craftingResult Lnet/minecraft/inventory/CraftingResultInventory;

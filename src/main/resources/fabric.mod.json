@@ -34,8 +34,5 @@
 	"recommends": {
 		"modmenu": "*",
 		"fabricskyboxes": ">=0.7.4"
-	},
-	"breaks": {
-		"swordblocking": ">=1.3.2"
 	}
 }

@@ -22,10 +22,11 @@ public abstract class MixinInGameHud {
             ci.cancel();
     }
 
-    @Redirect(method = "renderHotbar", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/player/PlayerEntity;getOffHandStack()Lnet/minecraft/item/ItemStack;"))
-    public ItemStack renderHotbar$old$renderOffHandSlot(PlayerEntity instance) {
-        return !OldAnimations.CONFIG.legacySettings.RENDER_OFFHAND_SLOT ? new ItemStack(Items.AIR) : instance.getOffHandStack();
-    }
+    // TODO: FIX Support with Sword Blocking Mod
+    // @Redirect(method = "renderHotbar", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/player/PlayerEntity;getOffHandStack()Lnet/minecraft/item/ItemStack;"))
+    // public ItemStack renderHotbar$old$renderOffHandSlot(PlayerEntity instance) {
+    //     return !OldAnimations.CONFIG.legacySettings.RENDER_OFFHAND_SLOT ? ItemStack.EMPTY : instance.getOffHandStack();
+    // }
 
     @Inject(method = "renderCrosshair", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/DrawContext;drawGuiTexture(Lnet/minecraft/util/Identifier;IIII)V", ordinal = 0, shift = At.Shift.BEFORE))
     public void renderCrosshair$old$blend_before(DrawContext context, float tickDelta, CallbackInfo ci) {
@@ -34,7 +35,7 @@ public abstract class MixinInGameHud {
         if (crosshairRenderType == QOLConfig.CrosshairRenderType.NO_BLEND || crosshairRenderType == QOLConfig.CrosshairRenderType.NO_BLEND_ALL || isCustomColor) {
             RenderSystem.disableBlend();
             if (isCustomColor) {
-//                Color color = new Color(OldAnimations.CONFIG.qolSettings.CROSSHAIR_COLOR, true);
+                // Color color = new Color(OldAnimations.CONFIG.qolSettings.CROSSHAIR_COLOR, true);
                 // TODO
             }
         }

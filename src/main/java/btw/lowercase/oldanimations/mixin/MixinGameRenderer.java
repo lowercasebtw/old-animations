@@ -9,6 +9,9 @@ import net.minecraft.client.render.OverlayTexture;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.inventory.Inventory;
+import net.minecraft.screen.PlayerScreenHandler;
+import net.minecraft.screen.slot.Slot;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.RotationAxis;
 import org.spongepowered.asm.mixin.*;
@@ -39,11 +42,18 @@ public abstract class MixinGameRenderer {
         return OldAnimations.CONFIG.legacySettings.OLD_DAMAGE_TILT ? 0.0f :  instance.getDamageTiltYaw();
     }
 
+    // NOTE: This way is hacky to allow me to check when a config setting has changed
     @Inject(method = "tick", at = @At("HEAD"))
     public void tick$overlayTextureReload(CallbackInfo ci) {
         if (OldAnimations.previousHitColor != OldAnimations.CONFIG.qolSettings.HIT_COLOR) {
             overlayTexture = new OverlayTexture();
             OldAnimations.previousHitColor = OldAnimations.CONFIG.qolSettings.HIT_COLOR;
+        }
+
+        if (OldAnimations.oldInventoryLayout != OldAnimations.CONFIG.legacySettings.OLD_INVENTORY_LAYOUT) {
+            // TODO: THIS IS EXTREMELY HACKY, PLS FIX
+            OldAnimations.updateInventorySlots();
+            OldAnimations.oldInventoryLayout = OldAnimations.CONFIG.legacySettings.OLD_INVENTORY_LAYOUT;
         }
     }
 

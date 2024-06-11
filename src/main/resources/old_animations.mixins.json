@@ -2,7 +2,8 @@
   "required": true,
   "package": "btw.lowercase.oldanimations.mixin",
   "compatibilityLevel": "JAVA_17",
-  "mixins": [],
+  "mixins": [
+  ],
   "client": [
     "MixinArmorFeatureRenderer",
     "MixinBossBarHud",
@@ -16,6 +17,7 @@
     "MixinLivingEntityRenderer",
     "MixinOverlayTexture",
     "MixinPlayerEntity",
+    "MixinPlayerScreenHandler",
     "MixinPressableWidget",
     "MixinSliderWidget",
     "MixinStatusEffect",
