@@ -5,6 +5,7 @@ import btw.lowercase.oldanimations.config.QOLConfig;
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.hud.InGameHud;
+import net.minecraft.client.render.RenderTickCounter;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
@@ -29,7 +30,7 @@ public abstract class MixinInGameHud {
     // }
 
     @Inject(method = "renderCrosshair", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/DrawContext;drawGuiTexture(Lnet/minecraft/util/Identifier;IIII)V", ordinal = 0, shift = At.Shift.BEFORE))
-    public void renderCrosshair$old$blend_before(DrawContext context, float tickDelta, CallbackInfo ci) {
+    public void renderCrosshair$old$blend_before(DrawContext context, RenderTickCounter tickCounter, CallbackInfo ci) {
         QOLConfig.CrosshairRenderType crosshairRenderType = OldAnimations.CONFIG.qolSettings.CROSSHAIR_RENDER_TYPE;
         boolean isCustomColor = crosshairRenderType == QOLConfig.CrosshairRenderType.CUSTOM_COLOR;
         if (crosshairRenderType == QOLConfig.CrosshairRenderType.NO_BLEND || crosshairRenderType == QOLConfig.CrosshairRenderType.NO_BLEND_ALL || isCustomColor) {
@@ -42,7 +43,7 @@ public abstract class MixinInGameHud {
     }
 
     @Inject(method = "renderCrosshair", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/DrawContext;drawGuiTexture(Lnet/minecraft/util/Identifier;IIII)V", ordinal = 0, shift = At.Shift.AFTER))
-    public void renderCrosshair$old$blend_after(DrawContext context, float tickDelta, CallbackInfo ci) {
+    public void renderCrosshair$old$blend_after(DrawContext context, RenderTickCounter tickCounter, CallbackInfo ci) {
         QOLConfig.CrosshairRenderType crosshairRenderType = OldAnimations.CONFIG.qolSettings.CROSSHAIR_RENDER_TYPE;
         if (crosshairRenderType == QOLConfig.CrosshairRenderType.NO_BLEND || crosshairRenderType == QOLConfig.CrosshairRenderType.NO_BLEND_ALL || crosshairRenderType == QOLConfig.CrosshairRenderType.CUSTOM_COLOR) {
             RenderSystem.enableBlend();

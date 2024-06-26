@@ -44,7 +44,7 @@ public abstract class MixinPlayerEntity extends LivingEntity {
 
     @Redirect(method = "attack", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/World;playSound(Lnet/minecraft/entity/player/PlayerEntity;DDDLnet/minecraft/sound/SoundEvent;Lnet/minecraft/sound/SoundCategory;FF)V"))
     public void attack$old$combatSounds(World world, PlayerEntity playerEntity, double x, double y, double z, SoundEvent sound, SoundCategory category, float volume, float pitch) {
-        if (OldAnimations.CONFIG.legacySettings.DISABLE_COMBAT_SOUNDS && (sound == SoundEvents.ENTITY_PLAYER_ATTACK_KNOCKBACK || sound == SoundEvents.ENTITY_PLAYER_ATTACK_SWEEP || sound == SoundEvents.ENTITY_PLAYER_ATTACK_CRIT || sound == SoundEvents.ENTITY_PLAYER_ATTACK_STRONG || sound == SoundEvents.ENTITY_PLAYER_ATTACK_WEAK))
+        if (OldAnimations.CONFIG.legacySettings.DISABLE_COMBAT_SOUNDS && (sound == SoundEvents.ENTITY_PLAYER_ATTACK_KNOCKBACK || sound == SoundEvents.ENTITY_PLAYER_ATTACK_SWEEP || sound == SoundEvents.ENTITY_PLAYER_ATTACK_CRIT || sound == SoundEvents.ENTITY_PLAYER_ATTACK_STRONG || sound == SoundEvents.ENTITY_PLAYER_ATTACK_WEAK || sound == SoundEvents.ENTITY_PLAYER_ATTACK_NODAMAGE))
             return;
         world.playSound(playerEntity, x, y, z, sound, category, volume, pitch);
     }

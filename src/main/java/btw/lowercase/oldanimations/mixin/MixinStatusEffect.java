@@ -16,7 +16,7 @@ import java.util.Map;
 @Mixin(value = StatusEffect.class, priority = Integer.MAX_VALUE)
 public abstract class MixinStatusEffect {
     @Unique
-    private static Map<String, Integer> oldPotionColors = new HashMap<>();
+    private static final Map<String, Integer> oldPotionColors = new HashMap<>();
     static {
         // Old Potion Colors (https://github.com/sp614x/optifine/blob/master/OptiFineDoc/doc/color.properties) + Other sources
         oldPotionColors.put("effect.minecraft.absorption", 0x2552A5);
