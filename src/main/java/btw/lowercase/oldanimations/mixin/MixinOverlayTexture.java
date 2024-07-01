@@ -1,6 +1,7 @@
 package btw.lowercase.oldanimations.mixin;
 
 import btw.lowercase.oldanimations.OldAnimations;
+import net.fabricmc.fabric.impl.client.indigo.renderer.helper.ColorHelper;
 import net.minecraft.client.render.OverlayTexture;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.Constant;
@@ -10,6 +11,6 @@ import org.spongepowered.asm.mixin.injection.ModifyConstant;
 public abstract class MixinOverlayTexture {
     @ModifyConstant(method = "<init>", constant = @Constant(intValue = -1308622593))
     private int init$old$customHitColor(int value) {
-        return OldAnimations.CONFIG.qolSettings.HIT_COLOR;
+        return ColorHelper.toVanillaColor(OldAnimations.CONFIG.qolSettings.HIT_COLOR);
     }
 }

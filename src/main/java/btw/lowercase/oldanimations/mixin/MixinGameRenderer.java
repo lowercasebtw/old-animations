@@ -9,12 +9,12 @@ import net.minecraft.client.render.OverlayTexture;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.inventory.Inventory;
-import net.minecraft.screen.PlayerScreenHandler;
-import net.minecraft.screen.slot.Slot;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.RotationAxis;
-import org.spongepowered.asm.mixin.*;
+import org.spongepowered.asm.mixin.Final;
+import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Mutable;
+import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.Redirect;
@@ -48,12 +48,6 @@ public abstract class MixinGameRenderer {
         if (OldAnimations.previousHitColor != OldAnimations.CONFIG.qolSettings.HIT_COLOR) {
             overlayTexture = new OverlayTexture();
             OldAnimations.previousHitColor = OldAnimations.CONFIG.qolSettings.HIT_COLOR;
-        }
-
-        if (OldAnimations.oldInventoryLayout != OldAnimations.CONFIG.legacySettings.OLD_INVENTORY_LAYOUT) {
-            // TODO: THIS IS EXTREMELY HACKY, PLS FIX
-            OldAnimations.updateInventorySlots();
-            OldAnimations.oldInventoryLayout = OldAnimations.CONFIG.legacySettings.OLD_INVENTORY_LAYOUT;
         }
     }
 

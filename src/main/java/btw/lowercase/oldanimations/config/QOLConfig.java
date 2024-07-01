@@ -33,7 +33,7 @@ public class QOLConfig implements ConfigData {
 
     @ConfigEntry.ColorPicker(allowAlpha = true)
     @ConfigEntry.Gui.Tooltip(count = 2)
-    public int HIT_COLOR = 0xB20000FF; // Complete
+    public int HIT_COLOR = 0xB2FF0000; // Complete
 
     @ConfigEntry.Gui.Tooltip(count = 1)
     public boolean RENDER_HIT_COLOR_ARMOR = false; // Complete

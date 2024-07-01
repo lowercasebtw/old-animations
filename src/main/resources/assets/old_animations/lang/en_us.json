@@ -73,7 +73,7 @@
     "text.autoconfig.old_animations.option.qolSettings.PARTICLE_MULTIPLIER.@Tooltip[1]": "Currently only affects sharpness particles.",
     "text.autoconfig.old_animations.option.qolSettings.HIT_COLOR": "§aCustom Hit Color",
     "text.autoconfig.old_animations.option.qolSettings.HIT_COLOR.@Tooltip[0]": "Changes the hit/damage color of the player model.",
-    "text.autoconfig.old_animations.option.qolSettings.HIT_COLOR.@Tooltip[1]": "Default Value: #B20000FF",
+    "text.autoconfig.old_animations.option.qolSettings.HIT_COLOR.@Tooltip[1]": "Default Value: #B2FF0000",
     "text.autoconfig.old_animations.option.qolSettings.RENDER_HIT_COLOR_ARMOR": "§aHit Color On Armor",
     "text.autoconfig.old_animations.option.qolSettings.RENDER_HIT_COLOR_ARMOR.@Tooltip": "Colors the armor as the same as the hit/damage color.",
     "text.autoconfig.old_animations.option.qolSettings.USE_1_7_HIT_RENDERER": "§c1.7 Damage Rendering",
