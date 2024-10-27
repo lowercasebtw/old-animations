@@ -16,12 +16,6 @@ public class LegacySettingsConfig implements ConfigData {
     public boolean OLD_BUTTON_TEXT_COLOR = false; // Complete
 
     @ConfigEntry.Gui.Tooltip
-    public boolean OLD_POTION_COLORS = false; // Complete
-
-    @ConfigEntry.Gui.Tooltip
-    public boolean POTION_GLINT = false; // Complete
-
-    @ConfigEntry.Gui.Tooltip
     public boolean BLEND_PARTICLE_COLORS = false;
 
     @ConfigEntry.Gui.Tooltip
@@ -47,9 +41,6 @@ public class LegacySettingsConfig implements ConfigData {
 
     @ConfigEntry.Gui.Tooltip
     public boolean DISABLE_COMBAT_SOUNDS = false; // Complete
-
-    @ConfigEntry.Gui.Tooltip
-    public boolean VANILLA_STATUS_HUD = true; // Complete
 
     @ConfigEntry.Gui.Tooltip
     public boolean RENDER_OFFHAND = true; // Complete

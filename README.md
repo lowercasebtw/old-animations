@@ -22,8 +22,6 @@ NOTE: Everything is vanilla configured by default, if you want to change any set
 - (✅) Old Backwards Walking (Pre 1.12)
 - (✅) Old Damage Tilt (Pre 1.20)
 - (✅) Old Button Text Cover (Hover, Default, Disabled)
-- (✅) Old Potion Colors
-- (✅) Potion Glint
 - (❌) Blend Particle Colors (Pre 1.20.5)
 - (❌) Sword Blocking (Visual)
 - (❌) Old Enchantment Glint (Pre 1.15)
