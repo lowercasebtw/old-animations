@@ -21,7 +21,7 @@ public abstract class MixinArmorFeatureRenderer<T extends LivingEntity, M extend
     @Unique
     private int coords;
 
-    @ModifyArg(method = "renderArmorParts", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/render/entity/model/BipedEntityModel;render(Lnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/render/VertexConsumer;IIFFFF)V"), index = 3)
+    @ModifyArg(method = "renderArmorParts", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/render/entity/model/BipedEntityModel;render(Lnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/render/VertexConsumer;III)V"), index = 3)
     public int modifyOverlayCoords(int original) {
         return OldAnimations.CONFIG.qolSettings.RENDER_HIT_COLOR_ARMOR ? coords : original;
     }

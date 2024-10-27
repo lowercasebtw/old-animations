@@ -1,7 +1,7 @@
 package btw.lowercase.oldanimations.mixin.entity;
 
-import btw.lowercase.oldanimations.accessor.BobbingAccessor;
 import btw.lowercase.oldanimations.OldAnimations;
+import btw.lowercase.oldanimations.accessor.BobbingAccessor;
 import net.minecraft.entity.EntityDimensions;
 import net.minecraft.entity.EntityPose;
 import net.minecraft.entity.EntityType;
@@ -22,11 +22,16 @@ import java.util.Map;
 
 @Mixin(value = PlayerEntity.class, priority = Integer.MAX_VALUE)
 public abstract class MixinPlayerEntity extends LivingEntity {
-    @Shadow @Final public static EntityDimensions STANDING_DIMENSIONS;
+    @Shadow
+    @Final
+    public static EntityDimensions STANDING_DIMENSIONS;
 
-    @Shadow @Final private static Map<EntityPose, EntityDimensions> POSE_DIMENSIONS;
+    @Shadow
+    @Final
+    private static Map<EntityPose, EntityDimensions> POSE_DIMENSIONS;
 
-    @Shadow public abstract void playSound(SoundEvent sound, float volume, float pitch);
+    @Shadow
+    public abstract void playSound(SoundEvent sound, float volume, float pitch);
 
     // NOTE: It's annoying that you have to extend a class to get its parent method/fields
     protected MixinPlayerEntity(EntityType<? extends LivingEntity> entityType, World world) {

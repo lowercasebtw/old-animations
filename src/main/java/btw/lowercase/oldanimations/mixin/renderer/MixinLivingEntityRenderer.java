@@ -36,8 +36,9 @@ public abstract class MixinLivingEntityRenderer<T extends LivingEntity, M extend
 
     @Inject(method = "hasLabel(Lnet/minecraft/entity/LivingEntity;)Z", at = @At("RETURN"), cancellable = true)
     public void hasLabel(T livingEntity, CallbackInfoReturnable<Boolean> cir) {
-        if (OldAnimations.CONFIG.qolSettings.SHOW_NAMETAG_THIRD_PERSON && livingEntity == MinecraftClient.getInstance().getCameraEntity())
+        if (OldAnimations.CONFIG.qolSettings.SHOW_NAMETAG_THIRD_PERSON && livingEntity == MinecraftClient.getInstance().getCameraEntity()) {
             cir.setReturnValue(true);
+        }
     }
 
     // Code used from/inspired by:

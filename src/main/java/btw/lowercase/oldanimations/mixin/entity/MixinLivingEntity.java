@@ -1,7 +1,7 @@
 package btw.lowercase.oldanimations.mixin.entity;
 
-import btw.lowercase.oldanimations.accessor.BobbingAccessor;
 import btw.lowercase.oldanimations.OldAnimations;
+import btw.lowercase.oldanimations.accessor.BobbingAccessor;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.util.math.MathHelper;
 import org.spongepowered.asm.mixin.Mixin;

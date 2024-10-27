@@ -21,7 +21,7 @@ public abstract class MixinCamera {
     private float lastCameraY;
 
     @Shadow
-    protected abstract void moveBy(double x, double y, double z);
+    protected abstract void moveBy(float f, float g, float h);
 
     @Inject(method = "update", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/render/Camera;setRotation(FF)V", shift = At.Shift.BEFORE))
     private void update$old$smoothSneaking(BlockView area, Entity focusedEntity, boolean thirdPerson, boolean inverseView, float tickDelta, CallbackInfo ci) {
