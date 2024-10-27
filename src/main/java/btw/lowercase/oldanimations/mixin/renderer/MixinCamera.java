@@ -38,19 +38,19 @@ public abstract class MixinCamera {
 
         // TODO: Fix accuracies for different states, like in bed, in third person, etc...
 
-        VisualSettingsConfig.CameraVersion cameraVersion = OldAnimations.CONFIG.visualSettings.CAMERA_VERSION;
-        int ordinal = cameraVersion.ordinal();
-
+        int ordinal = OldAnimations.CONFIG.visualSettings.CAMERA_VERSION.ordinal();
         if (ordinal <= VisualSettingsConfig.CameraVersion._1_14_to_1_14_3.ordinal()) {
             // <= 1.14.3
-            if (!thirdPerson && !(entity instanceof LivingEntity && ((LivingEntity) entity).isSleeping()))
+            if (!thirdPerson && !(entity instanceof LivingEntity && ((LivingEntity) entity).isSleeping())) {
                 this.moveBy(-0.05000000074505806F, 0.0F, 0.0F);
+            }
+
             if (ordinal <= VisualSettingsConfig.CameraVersion._1_9_to_1_13_2.ordinal()) {
                 // <= 1.13.2
                 this.moveBy(0.1F, 0.0F, 0.0F);
-                ;
+
+                // <= 1.8
                 if (ordinal == VisualSettingsConfig.CameraVersion._BELOW_OR_1_8.ordinal()) {
-                    // == 1.8
                     this.moveBy(-0.15F, 0, 0); // unfixing parallax
                 }
             }

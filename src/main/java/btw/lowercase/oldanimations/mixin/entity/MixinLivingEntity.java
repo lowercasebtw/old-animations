@@ -1,7 +1,7 @@
 package btw.lowercase.oldanimations.mixin.entity;
 
 import btw.lowercase.oldanimations.OldAnimations;
-import btw.lowercase.oldanimations.accessor.BobbingAccessor;
+import btw.lowercase.oldanimations.ViewBobbingStorage;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.util.math.MathHelper;
 import org.spongepowered.asm.mixin.Mixin;
@@ -12,7 +12,7 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(value = LivingEntity.class, priority = Integer.MAX_VALUE)
-public abstract class MixinLivingEntity implements BobbingAccessor {
+public abstract class MixinLivingEntity implements ViewBobbingStorage {
     @Unique
     private float bobbingTilt = 0.0f;
 

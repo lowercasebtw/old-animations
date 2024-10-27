@@ -1,6 +1,6 @@
-package btw.lowercase.oldanimations.accessor;
+package btw.lowercase.oldanimations;
 
-public interface BobbingAccessor {
+public interface ViewBobbingStorage {
     void tiltingFix$setBobbingTilt(float bobbingTilt);
     void tiltingFix$setPreviousBobbingTilt(float previousBobbingTilt);
 

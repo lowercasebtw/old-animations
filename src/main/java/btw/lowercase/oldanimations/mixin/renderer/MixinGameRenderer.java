@@ -1,7 +1,7 @@
 package btw.lowercase.oldanimations.mixin.renderer;
 
 import btw.lowercase.oldanimations.OldAnimations;
-import btw.lowercase.oldanimations.accessor.BobbingAccessor;
+import btw.lowercase.oldanimations.ViewBobbingStorage;
 import com.llamalad7.mixinextras.injector.v2.WrapWithCondition;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.render.GameRenderer;
@@ -49,7 +49,7 @@ public abstract class MixinGameRenderer {
     private void bobView$bug$jumpTilt(MatrixStack matrices, float tickDelta, CallbackInfo ci) {
         if (!OldAnimations.CONFIG.bugFixes.VERTICAL_BOBBING_TILT || !(this.client.getCameraEntity() instanceof PlayerEntity playerEntity))
             return;
-        BobbingAccessor bobbingAccessor = (BobbingAccessor) playerEntity;
+        ViewBobbingStorage bobbingAccessor = (ViewBobbingStorage) playerEntity;
         float j = MathHelper.lerp(tickDelta, bobbingAccessor.tiltingFix$getPreviousBobbingTilt(), bobbingAccessor.tiltingFix$getBobbingTilt());
         matrices.multiply(RotationAxis.POSITIVE_X.rotationDegrees(j));
     }

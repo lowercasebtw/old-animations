@@ -13,6 +13,7 @@ public class OldAnimations implements ClientModInitializer {
     public static final AnimationsConfig CONFIG = AutoConfig.register(AnimationsConfig.class,
             PartitioningSerializer.wrap(JanksonConfigSerializer::new)).getConfig();
 
+    public static int armorOverlayCoords;
     public static int previousHitColor = 0;
 
     @Override

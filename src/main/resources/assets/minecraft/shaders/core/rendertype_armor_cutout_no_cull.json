@@ -1,30 +1,21 @@
 {
+	"vertex": "minecraft:core/rendertype_armor_cutout_no_cull",
+	"fragment": "minecraft:core/rendertype_armor_cutout_no_cull",
+
 	"blend": {
 		"func": "add",
 		"srcrgb": "srcalpha",
 		"dstrgb": "1-srcalpha"
 	},
-	"vertex": "rendertype_armor_cutout_no_cull",
-	"fragment": "rendertype_armor_cutout_no_cull",
-	"attributes": [
-		"Position",
-		"Color",
-		"UV0",
-		"UV1",
-		"UV2",
-		"Normal"
-	],
+
+	"attributes": ["Position", "Color", "UV0", "UV1", "UV2", "Normal"],
+
 	"samplers": [
-		{
-			"name": "Sampler0"
-		},
-		{
-			"name": "Sampler1"
-		},
-		{
-			"name": "Sampler2"
-		}
+		{ "name": "Sampler0" },
+		{ "name": "Sampler1" },
+		{ "name": "Sampler2" }
 	],
+
 	"uniforms": [
 		{
 			"name": "ModelViewMat",

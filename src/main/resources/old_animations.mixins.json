@@ -3,21 +3,23 @@
   "package": "btw.lowercase.oldanimations.mixin",
   "compatibilityLevel": "JAVA_17",
   "client": [
+    "accessor.ClientWorldPropertiesAccessor",
+    "accessor.SkyRenderingAccessor",
+    "entity.MixinLivingEntity",
+    "entity.MixinPlayerEntity",
     "renderer.MixinArmorFeatureRenderer",
-    "screen.hud.MixinBossBarHud",
     "renderer.MixinCamera",
+    "renderer.MixinEquipmentRenderer",
     "renderer.MixinGameRenderer",
     "renderer.MixinHeldItemRenderer",
-    "screen.hud.MixinInGameHud",
-    "screen.MixinInventoryScreen",
-    "entity.MixinLivingEntity",
     "renderer.MixinLivingEntityRenderer",
     "renderer.MixinOverlayTexture",
-    "entity.MixinPlayerEntity",
-    "screen.MixinPlayerScreenHandler",
+    "renderer.MixinWorldRenderer",
+    "screen.MixinInventoryScreen",
+    "screen.hud.MixinBossBarHud",
+    "screen.hud.MixinInGameHud",
     "screen.widget.MixinPressableWidget",
-    "screen.widget.MixinSliderWidget",
-    "renderer.MixinWorldRenderer"
+    "screen.widget.MixinSliderWidget"
   ],
   "injectors": {
     "defaultRequire": 1

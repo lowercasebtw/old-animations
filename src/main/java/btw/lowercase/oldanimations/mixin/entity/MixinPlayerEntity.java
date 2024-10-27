@@ -1,7 +1,7 @@
 package btw.lowercase.oldanimations.mixin.entity;
 
 import btw.lowercase.oldanimations.OldAnimations;
-import btw.lowercase.oldanimations.accessor.BobbingAccessor;
+import btw.lowercase.oldanimations.ViewBobbingStorage;
 import net.minecraft.entity.EntityDimensions;
 import net.minecraft.entity.EntityPose;
 import net.minecraft.entity.EntityType;
@@ -42,7 +42,7 @@ public abstract class MixinPlayerEntity extends LivingEntity {
     public void tickMovement(CallbackInfo ci) {
         if (!OldAnimations.CONFIG.bugFixes.VERTICAL_BOBBING_TILT)
             return;
-        BobbingAccessor bobbingAccessor = (BobbingAccessor) this;
+        ViewBobbingStorage bobbingAccessor = (ViewBobbingStorage) this;
         float g = this.isOnGround() || this.getHealth() <= 0.0f ? 0.0f : (float) (Math.atan(-this.getVelocity().y * (double) 0.2f) * 15.0);
         bobbingAccessor.tiltingFix$setBobbingTilt(bobbingAccessor.tiltingFix$getBobbingTilt() + (g - bobbingAccessor.tiltingFix$getBobbingTilt()) * 0.8f);
     }
