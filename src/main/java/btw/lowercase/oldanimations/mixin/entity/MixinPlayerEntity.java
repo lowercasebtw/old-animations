@@ -1,6 +1,6 @@
-package btw.lowercase.oldanimations.mixin;
+package btw.lowercase.oldanimations.mixin.entity;
 
-import btw.lowercase.oldanimations.BobbingAccessor;
+import btw.lowercase.oldanimations.accessor.BobbingAccessor;
 import btw.lowercase.oldanimations.OldAnimations;
 import net.minecraft.entity.EntityDimensions;
 import net.minecraft.entity.EntityPose;

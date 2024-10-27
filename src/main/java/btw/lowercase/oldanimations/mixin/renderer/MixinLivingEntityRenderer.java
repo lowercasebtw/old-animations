@@ -1,9 +1,8 @@
-package btw.lowercase.oldanimations.mixin;
+package btw.lowercase.oldanimations.mixin.renderer;
 
 import btw.lowercase.oldanimations.OldAnimations;
 import btw.lowercase.oldanimations.RenderedOverlay;
 import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.render.entity.EntityRenderer;
 import net.minecraft.client.render.entity.EntityRendererFactory;
@@ -28,9 +27,12 @@ public abstract class MixinLivingEntityRenderer<T extends LivingEntity, M extend
     }
 
     @Shadow
-    public static int getOverlay(LivingEntity livingEntity, float tickDelta) { return 0; }
+    public static int getOverlay(LivingEntity livingEntity, float tickDelta) {
+        return 0;
+    }
 
-    @Shadow protected abstract float getAnimationCounter(T entity, float tickDelta);
+    @Shadow
+    protected abstract float getAnimationCounter(T entity, float tickDelta);
 
     @Inject(method = "hasLabel(Lnet/minecraft/entity/LivingEntity;)Z", at = @At("RETURN"), cancellable = true)
     public void hasLabel(T livingEntity, CallbackInfoReturnable<Boolean> cir) {

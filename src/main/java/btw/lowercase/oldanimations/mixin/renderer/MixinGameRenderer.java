@@ -1,7 +1,7 @@
-package btw.lowercase.oldanimations.mixin;
+package btw.lowercase.oldanimations.mixin.renderer;
 
-import btw.lowercase.oldanimations.BobbingAccessor;
 import btw.lowercase.oldanimations.OldAnimations;
+import btw.lowercase.oldanimations.accessor.BobbingAccessor;
 import com.llamalad7.mixinextras.injector.v2.WrapWithCondition;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.render.GameRenderer;
@@ -22,14 +22,14 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(value = GameRenderer.class, priority = Integer.MAX_VALUE)
 public abstract class MixinGameRenderer {
-    @Shadow @Final
+    @Shadow
+    @Final
     MinecraftClient client;
 
     @Mutable
-    @Shadow @Final
+    @Shadow
+    @Final
     private OverlayTexture overlayTexture;
-
-    @Shadow protected abstract void bobView(MatrixStack matrices, float tickDelta);
 
     @Inject(method = "tiltViewWhenHurt", at = @At("HEAD"), cancellable = true)
     public void tiltViewWhenHurt$old$noTilt(MatrixStack matrices, float tickDelta, CallbackInfo ci) {
@@ -39,7 +39,7 @@ public abstract class MixinGameRenderer {
 
     @Redirect(method = "tiltViewWhenHurt", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/LivingEntity;getDamageTiltYaw()F"))
     private float tiltViewWhenHurt$old(LivingEntity instance) {
-        return OldAnimations.CONFIG.legacySettings.OLD_DAMAGE_TILT ? 0.0f :  instance.getDamageTiltYaw();
+        return OldAnimations.CONFIG.legacySettings.OLD_DAMAGE_TILT ? 0.0f : instance.getDamageTiltYaw();
     }
 
     // NOTE: This way is hacky to allow me to check when a config setting has changed

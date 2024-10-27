@@ -1,4 +1,4 @@
-package btw.lowercase.oldanimations.mixin;
+package btw.lowercase.oldanimations.mixin.renderer;
 
 import btw.lowercase.oldanimations.OldAnimations;
 import com.llamalad7.mixinextras.sugar.Local;
@@ -30,11 +30,17 @@ public abstract class MixinWorldRenderer {
 
     // TODO: Fix FSB effecting the sky color
 
-    @Shadow @Final private MinecraftClient client;
+    @Shadow
+    @Final
+    private MinecraftClient client;
 
-    @Shadow @Nullable private ClientWorld world;
+    @Shadow
+    @Nullable
+    private ClientWorld world;
 
-    @Shadow @Nullable private VertexBuffer darkSkyBuffer;
+    @Shadow
+    @Nullable
+    private VertexBuffer darkSkyBuffer;
 
     @Redirect(method = "drawEntityOutlinesFramebuffer", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/render/WorldRenderer;canDrawEntityOutlines()Z"))
     public boolean drawEntityOutlinesFramebuffer$old$glowingOutline(WorldRenderer instance) {

@@ -1,4 +1,4 @@
-package btw.lowercase.oldanimations.mixin;
+package btw.lowercase.oldanimations.mixin.renderer;
 
 import btw.lowercase.oldanimations.OldAnimations;
 import btw.lowercase.oldanimations.config.VisualSettingsConfig;
@@ -14,12 +14,15 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(value = Camera.class, priority = Integer.MAX_VALUE)
 public abstract class MixinCamera {
-    @Shadow private float cameraY;
+    @Shadow
+    private float cameraY;
 
-    @Shadow private float lastCameraY;
-    
-    @Shadow protected abstract void moveBy(float f, float g, float h);
-    
+    @Shadow
+    private float lastCameraY;
+
+    @Shadow
+    protected abstract void moveBy(double x, double y, double z);
+
     @Inject(method = "update", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/render/Camera;setRotation(FF)V", shift = At.Shift.BEFORE))
     private void update$old$smoothSneaking(BlockView area, Entity focusedEntity, boolean thirdPerson, boolean inverseView, float tickDelta, CallbackInfo ci) {
         if (!OldAnimations.CONFIG.visualSettings.SMOOTH_SNEAK_ANIMATION) {
@@ -40,25 +43,22 @@ public abstract class MixinCamera {
 
         if (ordinal <= VisualSettingsConfig.CameraVersion._1_14_to_1_14_3.ordinal()) {
             // <= 1.14.3
-            if (!thirdPerson && !(entity instanceof LivingEntity && ((LivingEntity)entity).isSleeping()))
+            if (!thirdPerson && !(entity instanceof LivingEntity && ((LivingEntity) entity).isSleeping()))
                 this.moveBy(-0.05000000074505806F, 0.0F, 0.0F);
             if (ordinal <= VisualSettingsConfig.CameraVersion._1_9_to_1_13_2.ordinal()) {
                 // <= 1.13.2
-                this.moveBy(0.1F, 0.0F, 0.0F);;
+                this.moveBy(0.1F, 0.0F, 0.0F);
+                ;
                 if (ordinal == VisualSettingsConfig.CameraVersion._BELOW_OR_1_8.ordinal()) {
                     // == 1.8
                     this.moveBy(-0.15F, 0, 0); // unfixing parallax
                 }
             }
-        }
-
-        else if (ordinal == VisualSettingsConfig.CameraVersion._1_14_4_to_1_20.ordinal()) {
+        } else if (ordinal == VisualSettingsConfig.CameraVersion._1_14_4_to_1_20.ordinal()) {
             // TODO: _1_14_4_to_1_20
             // tf changed?
             return;
-        }
-
-        else if (ordinal == VisualSettingsConfig.CameraVersion.BEDROCK.ordinal()) {
+        } else if (ordinal == VisualSettingsConfig.CameraVersion.BEDROCK.ordinal()) {
             // TODO
             return;
         }

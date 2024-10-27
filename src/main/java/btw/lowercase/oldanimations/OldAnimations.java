@@ -10,13 +10,13 @@ import net.fabricmc.api.Environment;
 
 @Environment(EnvType.CLIENT)
 public class OldAnimations implements ClientModInitializer {
-	public static final AnimationsConfig CONFIG = AutoConfig.register(AnimationsConfig.class,
-			PartitioningSerializer.wrap(JanksonConfigSerializer::new)).getConfig();
+    public static final AnimationsConfig CONFIG = AutoConfig.register(AnimationsConfig.class,
+            PartitioningSerializer.wrap(JanksonConfigSerializer::new)).getConfig();
 
-	public static int previousHitColor = 0;
-	
-	@Override
-	public void onInitializeClient() {
-		previousHitColor = CONFIG.qolSettings.HIT_COLOR;
-	}
+    public static int previousHitColor = 0;
+
+    @Override
+    public void onInitializeClient() {
+        previousHitColor = CONFIG.qolSettings.HIT_COLOR;
+    }
 }

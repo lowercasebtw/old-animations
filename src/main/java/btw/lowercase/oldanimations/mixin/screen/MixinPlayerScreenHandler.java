@@ -1,15 +1,11 @@
-package btw.lowercase.oldanimations.mixin;
+package btw.lowercase.oldanimations.mixin.screen;
 
-import btw.lowercase.oldanimations.OldAnimations;
 import net.minecraft.screen.PlayerScreenHandler;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Unique;
-import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.ModifyArg;
 
 @Mixin(value = PlayerScreenHandler.class, priority = Integer.MAX_VALUE)
 public class MixinPlayerScreenHandler {
-	// NOTE: THIS IS THE SURVIVAL INVENTORY
+    // NOTE: THIS IS THE SURVIVAL INVENTORY
 
 //	@ModifyArg(method = "<init>", at = @At(value = "INVOKE", target = "Lnet/minecraft/screen/slot/CraftingResultSlot;<init>(Lnet/minecraft/entity/player/PlayerEntity;Lnet/minecraft/inventory/RecipeInputInventory;Lnet/minecraft/inventory/Inventory;III)V"), index = 4)
 //	public int old$inventoryCraftingSlotsResult$x(int x) {

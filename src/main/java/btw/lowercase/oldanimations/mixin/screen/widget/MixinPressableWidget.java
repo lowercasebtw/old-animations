@@ -1,16 +1,16 @@
-package btw.lowercase.oldanimations.mixin;
+package btw.lowercase.oldanimations.mixin.screen.widget;
 
 import btw.lowercase.oldanimations.OldAnimations;
 import net.minecraft.client.gui.widget.ClickableWidget;
-import net.minecraft.client.gui.widget.SliderWidget;
+import net.minecraft.client.gui.widget.PressableWidget;
 import net.minecraft.text.Text;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.Constant;
 import org.spongepowered.asm.mixin.injection.ModifyConstant;
 
-@Mixin(SliderWidget.class)
-public abstract class MixinSliderWidget extends ClickableWidget {
-    public MixinSliderWidget(int x, int y, int width, int height, Text message) {
+@Mixin(PressableWidget.class)
+public abstract class MixinPressableWidget extends ClickableWidget {
+    public MixinPressableWidget(int x, int y, int width, int height, Text message) {
         super(x, y, width, height, message);
     }
 

@@ -1,4 +1,4 @@
-package btw.lowercase.oldanimations.mixin;
+package btw.lowercase.oldanimations.mixin.renderer;
 
 import btw.lowercase.oldanimations.OldAnimations;
 import net.minecraft.client.MinecraftClient;
