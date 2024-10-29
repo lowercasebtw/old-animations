@@ -56,11 +56,11 @@ public abstract class MixinWorldRenderer {
 
     // TODO/NOTE: Possible injection spot could be wrong, will fix later on
     @Inject(method = "method_62215", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/render/SkyRendering;renderSky(FFF)V", shift = At.Shift.AFTER))
-    private void renderSky$old$deepBlueSkyHalf(Fog fog, DimensionEffects.SkyType skyType, float f, DimensionEffects dimensionEffects, CallbackInfo ci, @Local MatrixStack matrixStack, @Local(ordinal = 2) int skyColor) {
+    private void renderSky$old$deepBlueSkyHalf(Fog fog, DimensionEffects.SkyType skyType, float tickDelta, DimensionEffects dimensionEffects, CallbackInfo ci, @Local MatrixStack matrixStack, @Local(ordinal = 2) int skyColor) {
         if (OldAnimations.CONFIG.legacySettings.OLD_SKY_RENDERER) {
             assert this.client.player != null;
             assert this.world != null;
-            this.renderSkyBlueVoid(matrixStack, skyColor, this.client.player.getCameraPosVec(f).y - getHorizonHeight(this.world));
+            this.renderSkyBlueVoid(matrixStack, skyColor, this.client.player.getCameraPosVec(tickDelta).y - getHorizonHeight(this.world));
         }
     }
 
