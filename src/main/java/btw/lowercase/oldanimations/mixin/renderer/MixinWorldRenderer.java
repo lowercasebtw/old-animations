@@ -60,34 +60,33 @@ public abstract class MixinWorldRenderer {
         if (OldAnimations.CONFIG.legacySettings.OLD_SKY_RENDERER) {
             assert this.client.player != null;
             assert this.world != null;
-            double depth = this.client.player.getCameraPosVec(f).y - getHorizonHeight(this.world);
-            // TODO/NOTE: If Statement is a fix for it showing below y 0/-64, supposedly/(not entirely) accurate functionality
-            if (depth >= 0.0) {
-                this.renderSkyBlueVoid(matrixStack, skyColor, depth);
-            }
+            this.renderSkyBlueVoid(matrixStack, skyColor, this.client.player.getCameraPosVec(f).y - getHorizonHeight(this.world));
         }
     }
 
     @Unique
     private void renderSkyBlueVoid(MatrixStack matrixStack, int skyColor, double depth) {
-        ShaderProgram shaderProgram = RenderSystem.setShader(ShaderProgramKeys.POSITION);
+        // TODO/NOTE: If Statement is a fix for it showing below y 0/-64, supposedly/(not entirely) accurate functionality
+        if (depth >= 0.0) {
+            ShaderProgram shaderProgram = RenderSystem.setShader(ShaderProgramKeys.POSITION);
 
-        assert this.world != null;
-        Vector3f skyColorVec = ColorHelper.toVector(skyColor);
-        if (this.world.getDimensionEffects().isAlternateSkyColor()) {
-            RenderSystem.setShaderColor(skyColorVec.x * 0.2F + 0.04F, skyColorVec.y * 0.2F + 0.04F, skyColorVec.z * 0.6F + 0.1F, 1.0F);
-        } else {
-            RenderSystem.setShaderColor(skyColorVec.x, skyColorVec.y, skyColorVec.z, 1.0F);
+            assert this.world != null;
+            Vector3f skyColorVec = ColorHelper.toVector(skyColor);
+            if (this.world.getDimensionEffects().isAlternateSkyColor()) {
+                RenderSystem.setShaderColor(skyColorVec.x * 0.2F + 0.04F, skyColorVec.y * 0.2F + 0.04F, skyColorVec.z * 0.6F + 0.1F, 1.0F);
+            } else {
+                RenderSystem.setShaderColor(skyColorVec.x, skyColorVec.y, skyColorVec.z, 1.0F);
+            }
+
+            matrixStack.push();
+            matrixStack.multiplyPositionMatrix(RenderSystem.getModelViewMatrix());
+            matrixStack.translate(0.0F, -((float) (depth - 16.0)), 0.0F);
+            SkyRenderingAccessor skyRenderingAccessor = (SkyRenderingAccessor) this.skyRendering;
+            skyRenderingAccessor.getDarkSkyBuffer().bind();
+            skyRenderingAccessor.getDarkSkyBuffer().draw(matrixStack.peek().getPositionMatrix(), RenderSystem.getProjectionMatrix(), shaderProgram);
+            VertexBuffer.unbind();
+            matrixStack.pop();
         }
-
-        matrixStack.push();
-        matrixStack.multiplyPositionMatrix(RenderSystem.getModelViewMatrix());
-        matrixStack.translate(0.0F, -((float) (depth - 16.0)), 0.0F);
-        SkyRenderingAccessor skyRenderingAccessor = (SkyRenderingAccessor) this.skyRendering;
-        skyRenderingAccessor.getDarkSkyBuffer().bind();
-        skyRenderingAccessor.getDarkSkyBuffer().draw(matrixStack.peek().getPositionMatrix(), RenderSystem.getProjectionMatrix(), shaderProgram);
-        VertexBuffer.unbind();
-        matrixStack.pop();
     }
 
     // TODO: SODIUM/EMBEDDIUM PROPER SUPPORT
