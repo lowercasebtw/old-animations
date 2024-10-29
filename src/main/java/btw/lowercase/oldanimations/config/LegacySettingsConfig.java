@@ -49,5 +49,5 @@ public class LegacySettingsConfig implements ConfigData {
     public boolean RENDER_OFFHAND_SLOT = true; // Complete
 
     @ConfigEntry.Gui.Tooltip
-    public boolean OLD_INVENTORY_LAYOUT = true; // TODO: slots
+    public boolean OLD_INVENTORY_LAYOUT = false; // TODO: slots
 }

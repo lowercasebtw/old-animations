@@ -1,14 +1,12 @@
 {
-	"vertex": "minecraft:core/rendertype_armor_cutout_no_cull",
-	"fragment": "minecraft:core/rendertype_armor_cutout_no_cull",
+	"vertex": "minecraft:core/entity",
+	"fragment": "minecraft:core/entity",
 
-	"blend": {
-		"func": "add",
-		"srcrgb": "srcalpha",
-		"dstrgb": "1-srcalpha"
+	"defines": {
+		"values": {
+			"ALPHA_CUTOUT": "0.1"
+		}
 	},
-
-	"attributes": ["Position", "Color", "UV0", "UV1", "UV2", "Normal"],
 
 	"samplers": [
 		{ "name": "Sampler0" },
