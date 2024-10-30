@@ -47,11 +47,11 @@ public abstract class MixinGameRenderer {
 
     @Inject(method = "bobView", at = @At("TAIL"))
     private void bobView$bug$jumpTilt(MatrixStack matrices, float tickDelta, CallbackInfo ci) {
-        if (!OldAnimations.CONFIG.bugFixes.VERTICAL_BOBBING_TILT || !(this.client.getCameraEntity() instanceof PlayerEntity playerEntity))
-            return;
-        ViewBobbingStorage bobbingAccessor = (ViewBobbingStorage) playerEntity;
-        float j = MathHelper.lerp(tickDelta, bobbingAccessor.tiltingFix$getPreviousBobbingTilt(), bobbingAccessor.tiltingFix$getBobbingTilt());
-        matrices.multiply(RotationAxis.POSITIVE_X.rotationDegrees(j));
+        if (OldAnimations.CONFIG.bugFixes.VERTICAL_BOBBING_TILT && this.client.getCameraEntity() instanceof PlayerEntity playerEntity) {
+            ViewBobbingStorage bobbingAccessor = (ViewBobbingStorage) playerEntity;
+            float j = MathHelper.lerp(tickDelta, bobbingAccessor.tiltingFix$getPreviousBobbingTilt(), bobbingAccessor.tiltingFix$getBobbingTilt());
+            matrices.multiply(RotationAxis.POSITIVE_X.rotationDegrees(j));
+        }
     }
 
     @WrapWithCondition(method = "renderHand", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/render/GameRenderer;tiltViewWhenHurt(Lnet/minecraft/client/util/math/MatrixStack;F)V"))

@@ -14,8 +14,10 @@ import java.util.UUID;
 public class MixinBossBarHud {
     @Redirect(method = "render", at = @At(value = "INVOKE", target = "Ljava/util/Map;isEmpty()Z"))
     public boolean render$qol$disableBossbar(Map<UUID, ClientBossBar> instance) {
-        if (!OldAnimations.CONFIG.qolSettings.RENDER_BOSSBAR)
+        if (!OldAnimations.CONFIG.qolSettings.RENDER_BOSSBAR) {
             return true;
-        return instance.isEmpty();
+        } else {
+            return instance.isEmpty();
+        }
     }
 }

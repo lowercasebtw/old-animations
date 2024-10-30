@@ -15,7 +15,11 @@ public abstract class MixinPressableWidget extends ClickableWidget {
     }
 
     @ModifyConstant(method = "renderWidget", constant = @Constant(intValue = 0xffffff))
-    public int renderWidget$old$textColor(int constant) {
-        return OldAnimations.CONFIG.legacySettings.OLD_BUTTON_TEXT_COLOR ? (!active ? 0xe0e0e0 : (hovered ? 0xffffa0 : 0xe0e0e0)) : constant;
+    private int renderWidget$old$textColor(int constant) {
+        if (OldAnimations.CONFIG.legacySettings.OLD_BUTTON_TEXT_COLOR) {
+            return !active ? 0xe0e0e0 : (hovered ? 0xffffa0 : 0xe0e0e0);
+        } else {
+            return constant;
+        }
     }
 }

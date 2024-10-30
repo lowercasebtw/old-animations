@@ -66,16 +66,16 @@ public abstract class MixinHeldItemRenderer {
         return OldAnimations.CONFIG.legacySettings.RENDER_OFFHAND;
     }
 
-    @Inject(at = @At(value = "HEAD"), method = "updateHeldItems", cancellable = true)
+    @Inject(method = "updateHeldItems", at = @At(value = "HEAD"), cancellable = true)
     private void updateHeldItems$old(CallbackInfo ci) {
-        if (!OldAnimations.CONFIG.visualSettings.OLD_SWING_ANIMATION)
-            return;
-        ci.cancel();
-        PlayerEntity playerEntity = this.client.player;
-        assert playerEntity != null;
-        update(playerEntity.getMainHandStack(), mainHand, false);
-        if (OldAnimations.CONFIG.legacySettings.RENDER_OFFHAND) {
-            update(playerEntity.getOffHandStack(), offHand, true);
+        if (OldAnimations.CONFIG.visualSettings.OLD_SWING_ANIMATION) {
+            ci.cancel();
+            PlayerEntity playerEntity = this.client.player;
+            assert playerEntity != null;
+            update(playerEntity.getMainHandStack(), mainHand, false);
+            if (OldAnimations.CONFIG.legacySettings.RENDER_OFFHAND) {
+                update(playerEntity.getOffHandStack(), offHand, true);
+            }
         }
     }
 }

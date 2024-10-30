@@ -1,29 +1,23 @@
 package btw.lowercase.oldanimations.mixin.screen.hud;
 
 import btw.lowercase.oldanimations.OldAnimations;
-import btw.lowercase.oldanimations.config.QOLConfig;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
-import com.mojang.blaze3d.systems.RenderSystem;
-import net.minecraft.client.gl.ShaderProgramKeys;
-import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.hud.InGameHud;
-import net.minecraft.client.render.RenderLayer;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.Identifier;
-import net.minecraft.util.math.ColorHelper;
-import org.joml.Vector3f;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
-
-import java.util.function.Function;
 
 @Mixin(value = InGameHud.class, priority = Integer.MAX_VALUE)
 public abstract class MixinInGameHud {
     @WrapOperation(method = "renderHotbar", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/player/PlayerEntity;getOffHandStack()Lnet/minecraft/item/ItemStack;"))
     public ItemStack renderHotbar$old$renderOffHandSlot(PlayerEntity instance, Operation<ItemStack> original) {
-        return !OldAnimations.CONFIG.legacySettings.RENDER_OFFHAND_SLOT ? ItemStack.EMPTY : original.call(instance);
+        if (!OldAnimations.CONFIG.legacySettings.RENDER_OFFHAND_SLOT) {
+            return ItemStack.EMPTY;
+        } else {
+            return original.call(instance);
+        }
     }
 
     // TODO: Option to render crosshair in thirdperson

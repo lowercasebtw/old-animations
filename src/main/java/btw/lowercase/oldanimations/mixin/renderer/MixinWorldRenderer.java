@@ -44,24 +44,9 @@ public abstract class MixinWorldRenderer {
     @Final
     private SkyRendering skyRendering;
 
-    @Redirect(method = "drawEntityOutlinesFramebuffer", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/render/WorldRenderer;canDrawEntityOutlines()Z"))
-    public boolean drawEntityOutlinesFramebuffer$old$glowingOutline(WorldRenderer instance) {
-        return OldAnimations.CONFIG.visualSettings.RENDER_GLOWING_EFFECT;
-    }
-
     @Unique
     public double getHorizonHeight(ClientWorld world) {
         return ((ClientWorldPropertiesAccessor) world.getLevelProperties()).isFlatWorld() ? (OldAnimations.CONFIG.legacySettings.OLD_HORIZON_HEIGHT ? 0.0 : world.getBottomY()) : 63.0;
-    }
-
-    // TODO/NOTE: Possible injection spot could be wrong, will fix later on
-    @Inject(method = "method_62215", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/render/SkyRendering;renderSky(FFF)V", shift = At.Shift.AFTER))
-    private void renderSky$old$deepBlueSkyHalf(Fog fog, DimensionEffects.SkyType skyType, float tickDelta, DimensionEffects dimensionEffects, CallbackInfo ci, @Local MatrixStack matrixStack, @Local(ordinal = 2) int skyColor) {
-        if (OldAnimations.CONFIG.legacySettings.OLD_SKY_RENDERER) {
-            assert this.client.player != null;
-            assert this.world != null;
-            this.renderSkyBlueVoid(matrixStack, skyColor, this.client.player.getCameraPosVec(tickDelta).y - getHorizonHeight(this.world));
-        }
     }
 
     @Unique
@@ -86,6 +71,21 @@ public abstract class MixinWorldRenderer {
             skyRenderingAccessor.getDarkSkyBuffer().draw(matrixStack.peek().getPositionMatrix(), RenderSystem.getProjectionMatrix(), shaderProgram);
             VertexBuffer.unbind();
             matrixStack.pop();
+        }
+    }
+
+    @Redirect(method = "drawEntityOutlinesFramebuffer", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/render/WorldRenderer;canDrawEntityOutlines()Z"))
+    private boolean drawEntityOutlinesFramebuffer$old$glowingOutline(WorldRenderer instance) {
+        return OldAnimations.CONFIG.visualSettings.RENDER_GLOWING_EFFECT;
+    }
+
+    // TODO/NOTE: Possible injection spot could be wrong, will fix later on
+    @Inject(method = "method_62215", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/render/SkyRendering;renderSky(FFF)V", shift = At.Shift.AFTER))
+    private void renderSky$old$deepBlueSkyHalf(Fog fog, DimensionEffects.SkyType skyType, float tickDelta, DimensionEffects dimensionEffects, CallbackInfo ci, @Local MatrixStack matrixStack, @Local(ordinal = 2) int skyColor) {
+        if (OldAnimations.CONFIG.legacySettings.OLD_SKY_RENDERER) {
+            assert this.client.player != null;
+            assert this.world != null;
+            this.renderSkyBlueVoid(matrixStack, skyColor, this.client.player.getCameraPosVec(tickDelta).y - getHorizonHeight(this.world));
         }
     }
 

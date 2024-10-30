@@ -6,9 +6,7 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.util.math.MathHelper;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
-import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.Redirect;
+import org.spongepowered.asm.mixin.injection.*;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(value = LivingEntity.class, priority = Integer.MAX_VALUE)
@@ -40,14 +38,18 @@ public abstract class MixinLivingEntity implements ViewBobbingStorage {
     }
 
     @Inject(method = "baseTick", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/LivingEntity;tickStatusEffects()V", shift = At.Shift.BEFORE))
-    public void baseTick(CallbackInfo ci) {
-        if (!OldAnimations.CONFIG.bugFixes.VERTICAL_BOBBING_TILT)
-            return;
-        this.tiltingFix$setPreviousBobbingTilt(this.tiltingFix$getBobbingTilt());
+    private void baseTick$fix$bobbings(CallbackInfo ci) {
+        if (OldAnimations.CONFIG.bugFixes.VERTICAL_BOBBING_TILT) {
+            this.tiltingFix$setPreviousBobbingTilt(this.tiltingFix$getBobbingTilt());
+        }
     }
 
-    @Redirect(method = "tick", at = @At(value = "INVOKE", target = "Lnet/minecraft/util/math/MathHelper;abs(F)F"))
+    @ModifyArg(method = "tick", at = @At(value = "INVOKE", target = "Lnet/minecraft/util/math/MathHelper;abs(F)F"), index = 0)
     private float tick$old$backwardsWalking(float value) {
-        return OldAnimations.CONFIG.legacySettings.OLD_BACKWARDS_WALKING ? 0.0f : MathHelper.abs(value);
+        if (OldAnimations.CONFIG.legacySettings.OLD_BACKWARDS_WALKING) {
+            return 0.0F;
+        } else {
+            return value;
+        }
     }
 }
