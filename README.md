@@ -1,6 +1,8 @@
 # Old Animations Mod for 1.20+
 Work in progress...
 
+# Announcement: Potion related stuff has been moved out into its own mod! https://modrinth.com/mod/legacy-potion-colors
+
 NOTE: Everything is vanilla configured by default, if you want to change any settings, please use Mod Menu or edit the json manually in the config folder.
 
 ## Includes
