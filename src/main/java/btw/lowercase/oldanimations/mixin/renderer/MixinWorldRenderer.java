@@ -71,6 +71,8 @@ public abstract class MixinWorldRenderer {
             skyRenderingAccessor.getDarkSkyBuffer().draw(matrixStack.peek().getPositionMatrix(), RenderSystem.getProjectionMatrix(), shaderProgram);
             VertexBuffer.unbind();
             matrixStack.pop();
+
+            RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
         }
     }
 
@@ -80,11 +82,13 @@ public abstract class MixinWorldRenderer {
     }
 
     // TODO/NOTE: Possible injection spot could be wrong, will fix later on
-    @Inject(method = "method_62215", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/render/SkyRendering;renderSky(FFF)V", shift = At.Shift.AFTER))
-    private void renderSky$old$deepBlueSkyHalf(Fog fog, DimensionEffects.SkyType skyType, float tickDelta, DimensionEffects dimensionEffects, CallbackInfo ci, @Local MatrixStack matrixStack, @Local(ordinal = 2) int skyColor) {
-        if (OldAnimations.CONFIG.legacySettings.OLD_SKY_RENDERER) {
+    @Inject(method = "method_62215", at = @At(value = "TAIL"))
+    private void renderSky$old$deepBlueSkyHalf(Fog fog, DimensionEffects.SkyType skyType, float tickDelta, DimensionEffects dimensionEffects, CallbackInfo ci, @Local MatrixStack matrixStack) {
+        if (OldAnimations.CONFIG.legacySettings.OLD_SKY_RENDERER && skyType != DimensionEffects.SkyType.END) {
             assert this.client.player != null;
             assert this.world != null;
+            // can't get it via local, so have to re-get it this way
+            int skyColor = this.world.getSkyColor(this.client.gameRenderer.getCamera().getPos(), tickDelta);
             this.renderSkyBlueVoid(matrixStack, skyColor, this.client.player.getCameraPosVec(tickDelta).y - getHorizonHeight(this.world));
         }
     }
