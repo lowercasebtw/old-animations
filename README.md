@@ -25,7 +25,6 @@ NOTE: Everything is vanilla configured by default, if you want to change any set
 - (✅) Old Damage Tilt (Pre 1.20)
 - (✅) Old Button Text Cover (Hover, Default, Disabled)
 - (❌) Blend Particle Colors (Pre 1.20.5)
-- (❌) Sword Blocking (Visual)
 - (❌) Old Enchantment Glint (Pre 1.15)
 - (❌) 1.7 Enchantment Glint
 - (✅) Old Sky Renderer
@@ -36,7 +35,6 @@ NOTE: Everything is vanilla configured by default, if you want to change any set
 - (✅) Vanilla Status HUD (Toggle)
 - (✅) Render Offhand (Toggle)
 - (✅) Render Offhand Slot (Toggle)
-- (🛠️) Old Inventory Layout (Crafting slot positions, from prior to 1.9)
 #
 
 # QOL
