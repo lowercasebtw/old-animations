@@ -2,8 +2,8 @@
 
 # Announcement: Potion related stuff has been moved out into its own mod! https://modrinth.com/mod/legacy-potion-colors
 
-THIS MOD HAS BEEN ABANDONED IN FAVOR OF https://github.com/Legacy-Visuals-Project/Animatium/
-EVERYTHING THIS MOD HAS, IS IN THAT MOD NOW & MORE
+# THIS MOD HAS BEEN ABANDONED IN FAVOR OF https://github.com/Legacy-Visuals-Project/Animatium/
+# EVERYTHING THIS MOD HAS, IS IN THAT MOD NOW & MORE
 
 NOTE: Everything is vanilla configured by default, if you want to change any settings, please use Mod Menu or edit the json manually in the config folder.
 
